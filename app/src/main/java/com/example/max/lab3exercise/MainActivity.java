@@ -1,5 +1,6 @@
 package com.example.max.lab3exercise;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,8 +9,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.*;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        Button button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(this);
     }
 
     @Override
@@ -52,5 +57,22 @@ public class MainActivity extends AppCompatActivity {
 
     public int sum(int a, int b) {
         return a + b;
+    }
+
+    public void onClick(View v) {
+        TextView sum = (TextView) findViewById(R.id.textView);
+        EditText eta = (EditText) findViewById(R.id.editText);
+        EditText etb = (EditText) findViewById(R.id.editText2);
+
+        //sum.setText(sum(Integer.parseInt(eta.getText().toString()) , Integer.parseInt(etb.getText().toString())));
+        String a = eta.getText().toString();
+        String b = etb.getText().toString();
+
+        int aa = Integer.parseInt(a);
+        int bb = Integer.parseInt(b);
+
+        int s = sum(aa, bb);
+
+        sum.setText(("" + s));
     }
 }
